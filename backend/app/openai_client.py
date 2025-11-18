@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from openai import OpenAI
+from openai import AsyncOpenAI
 
 from .config import get_settings
 
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class StoryModelClient:
     def __init__(self) -> None:
         self.settings = get_settings()
-        self.client = OpenAI(api_key=self.settings.openai_api_key)
+        self.client = AsyncOpenAI(api_key=self.settings.openai_api_key)
 
     async def generate_story(self, messages: list[dict[str, str]]) -> tuple[str, str, dict[str, Any]]:
         if not self.settings.openai_api_key:
