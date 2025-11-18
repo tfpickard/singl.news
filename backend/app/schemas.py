@@ -21,6 +21,7 @@ class StoryVersionDetail(StoryVersionBase):
 
 
 class StoryHistoryItem(StoryVersionBase):
+    full_text: str
     preview: str
 
 

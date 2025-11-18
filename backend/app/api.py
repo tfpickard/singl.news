@@ -42,6 +42,7 @@ async def get_history(
             id=story.id,
             created_at=story.created_at,
             summary=story.summary,
+            full_text=story.full_text,
             preview=story.full_text[:200],
         )
         for story in stories
