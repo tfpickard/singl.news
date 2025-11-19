@@ -5,3 +5,4 @@ backend/.venv
 frontend/node_modules
 frontend/.svelte-kit
 .DS_Store
+.openai
