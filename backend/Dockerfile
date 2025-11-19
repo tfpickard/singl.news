@@ -58,6 +58,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     xz-utils \
     && rm -rf /var/lib/apt/lists/*
 
+COPY --from=python-builder /opt/python /opt/python
 COPY --from=python-builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
 
