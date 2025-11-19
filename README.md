@@ -60,5 +60,9 @@ frontend together.
 docker compose up --build
 ```
 
+Compose automatically injects variables from your `.env` file into the backend and
+frontend containers, so copy `.env.example` to `.env` first if you have not
+already.
+
 The frontend will be reachable at http://localhost:4173 and proxies API/WebSocket
 calls to the backend service.
