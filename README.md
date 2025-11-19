@@ -31,6 +31,9 @@ Environment variables:
 - `SINGL_FEEDS` – comma-separated RSS URLs
 - `SINGL_UPDATE_MINUTES` – scheduler interval
 
+Copy `.env.example` to `.env` and adjust any values you need before starting the
+backend. The service automatically loads variables from that file on startup.
+
 Run tests with:
 
 ```bash
@@ -56,6 +59,10 @@ frontend together.
 ```bash
 docker compose up --build
 ```
+
+Compose automatically injects variables from your `.env` file into the backend and
+frontend containers, so copy `.env.example` to `.env` first if you have not
+already.
 
 The frontend will be reachable at http://localhost:4173 and proxies API/WebSocket
 calls to the backend service.

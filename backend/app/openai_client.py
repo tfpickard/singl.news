@@ -32,7 +32,6 @@ class StoryModelClient:
         response = await self.client.chat.completions.create(  # type: ignore[call-arg]
             model=self.settings.singl_model_name,
             messages=messages,
-            temperature=0.7,
         )
         choice = response.choices[0]
         text = choice.message.content or ""
@@ -45,7 +44,6 @@ class StoryModelClient:
                 },
                 {"role": "user", "content": text},
             ],
-            temperature=0.3,
         )
         summary = summary_response.choices[0].message.content or ""
         usage = getattr(response, "usage", None)
