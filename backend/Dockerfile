@@ -32,7 +32,7 @@ RUN cd /tmp && wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-$
     && make install \
     && rm -rf /tmp/Python-${PYTHON_VERSION}*
 
-RUN ${PY_PREFIX}/bin/python3 -m venv /opt/venv
+RUN ${PY_PREFIX}/bin/python3 -m venv --copies /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
 
 COPY backend/requirements.txt /tmp/requirements.txt
