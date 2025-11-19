@@ -31,6 +31,9 @@ Environment variables:
 - `SINGL_FEEDS` – comma-separated RSS URLs
 - `SINGL_UPDATE_MINUTES` – scheduler interval
 
+Copy `.env.example` to `.env` and adjust any values you need before starting the
+backend. The service automatically loads variables from that file on startup.
+
 Run tests with:
 
 ```bash
