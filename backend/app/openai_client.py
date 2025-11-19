@@ -13,10 +13,12 @@ logger = logging.getLogger(__name__)
 class StoryModelClient:
     def __init__(self) -> None:
         self.settings = get_settings()
-        self.client = AsyncOpenAI(api_key=self.settings.openai_api_key)
+        self.client: AsyncOpenAI | None = None
+        if self.settings.openai_api_key:
+            self.client = AsyncOpenAI(api_key=self.settings.openai_api_key)
 
     async def generate_story(self, messages: list[dict[str, str]]) -> tuple[str, str, dict[str, Any]]:
-        if not self.settings.openai_api_key:
+        if not self.settings.openai_api_key or not self.client:
             logger.warning("OPENAI_API_KEY not provided; using fallback narrative")
             fallback_text = "\n".join(
                 [
