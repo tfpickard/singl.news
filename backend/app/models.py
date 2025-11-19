@@ -20,7 +20,7 @@ class StoryVersion(Base):
         DateTime(timezone=True), nullable=False, index=True
     )
     full_text: Mapped[str] = mapped_column(Text(), nullable=False)
-    summary: Mapped[str] = mapped_column(String(1024), nullable=False)
+    summary: Mapped[str] = mapped_column(Text(), nullable=False)
     context_summary: Mapped[str | None] = mapped_column(Text())
     sources_snapshot: Mapped[dict | None] = mapped_column(JSONType)
     token_stats: Mapped[dict | None] = mapped_column(JSONType)
