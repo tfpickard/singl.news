@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .api import router as api_router
 from .config import get_settings
 from .database import Base, engine
-from .scheduler import start_scheduler
+from .scheduler import bootstrap_once, start_scheduler
 from .ws import router as ws_router
 
 settings = get_settings()
@@ -42,4 +42,8 @@ async def init_db() -> None:
 @app.on_event("startup")
 async def on_startup() -> None:
     await init_db()
+    # Run one scheduler cycle so a freshly started stack has an initial story
+    # and feed ingest before serving traffic. This prevents 404s on
+    # /api/story/current while waiting for the interval job to fire.
+    await bootstrap_once()
     start_scheduler()
